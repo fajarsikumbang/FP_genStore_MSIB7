@@ -1,13 +1,30 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container {
+    padding: 20px; /* Menambah padding pada container */
+}
+
+/* Tambahan untuk gambar di halaman detail */
+.img-fluid {
+    max-height: 400px; /* Mengatur tinggi maksimum untuk gambar di halaman detail */
+    object-fit: contain; /* Memastikan gambar proporsional dan terlihat baik */
+}
+
+
+.card-title {
+    font-weight: bold; /* Judul lebih menonjol */
 }
