@@ -1,14 +1,78 @@
-header {
-    margin-bottom: 20px;
+.cart-page {
+    margin-top: 20px;
 }
 
-.card {
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-}
 
-.card img {
-    height: 200px;
-    object-fit: contain;
+.table-responsive {
     width: 100%;
+    overflow-x: auto;
+}
+
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .table {
+        display: block;
+        width: 100%;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tr {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+
+    .table td {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .form-responsive input,
+    .form-responsive button {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 20px;
+    }
+
+    .table td {
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .form-responsive input,
+    .form-responsive button {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .table td {
+        font-size: 18px;
+    }
 }

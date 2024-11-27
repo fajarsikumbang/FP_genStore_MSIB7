@@ -9,7 +9,6 @@ function CartPage() {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [total, setTotal] = useState(0);
 
-    
     const formatRupiah = (value) => {
         return new Intl.NumberFormat("id-ID", {
             style: "currency",
@@ -17,7 +16,6 @@ function CartPage() {
         }).format(value);
     };
 
-    
     const calculateTotal = useCallback(() => {
         return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
     }, [items]);
@@ -31,19 +29,18 @@ function CartPage() {
         setShowConfirmation(true);
     };
 
-    
     useEffect(() => {
         setTotal(calculateTotal());
     }, [calculateTotal]);
 
     return (
-        <div className="container">
+        <div className="container cart-page">
             <h1 className="text-center">Keranjang Saya</h1>
             {items.length === 0 ? (
                 <h4 className="text-center">Anda belum memilih item</h4>
             ) : (
                 <div>
-                    <table className="table">
+                    <table className="table table-responsive">
                         <thead>
                             <tr>
                                 <th>Produk</th>
@@ -64,7 +61,7 @@ function CartPage() {
                                             value={item.quantity}
                                             min="1"
                                             onChange={(e) => {
-                                                const qty = Math.max(1, Number(e.target.value)); // Pastikan angka valid
+                                                const qty = Math.max(1, Number(e.target.value));
                                                 if (qty !== item.quantity) {
                                                     dispatch(addToCart({ ...item, quantity: qty }));
                                                 }
@@ -82,7 +79,7 @@ function CartPage() {
                         </tbody>
                     </table>
                     <h4>Total: {formatRupiah(total)}</h4>
-                    <form onSubmit={handlePayment} className="mt-4">
+                    <form onSubmit={handlePayment} className="mt-4 form-responsive">
                         <h5>Informasi Pembayaran</h5>
                         <input
                             type="text"
