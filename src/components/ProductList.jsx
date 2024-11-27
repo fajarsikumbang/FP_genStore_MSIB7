@@ -15,21 +15,26 @@ function ProductList({ products }) {
     };
 
     return (
-        <div className="row">
+        <div className="row product-list">
             {products.map((product) => (
                 <div className="col-lg-3 col-md-4 col-sm-6 mb-4" key={product.id}>
-                    <div className="card h-100">
-                        <img
-                            src={product.image}
-                            className="card-img-top"
-                            alt={product.title}
-                        />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">
+                    <div className="card product-card">
+                        <div className="card-img-container">
+                            <img
+                                src={product.image}
+                                className="card-img-top"
+                                alt={product.title}
+                            />
+                        </div>
+                        <div className="card-body d-flex flex-column justify-content-between">
+                            <h5 className="card-title text-center">
                                 <Link to={`/product/${product.id}`}>{product.title}</Link>
                             </h5>
-                            <p className="card-text">Harga: Rp{product.price}</p>
-                            <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>
+                            <p className="card-text text-center">Harga: Rp{product.price}</p>
+                            <button
+                                className="btn btn-primary mt-auto"
+                                onClick={() => handleAddToCart(product)}
+                            >
                                 Tambah ke Keranjang
                             </button>
                         </div>
