@@ -26,10 +26,10 @@ function DetailPage() {
                 </div>
                 <div className="col-md-6">
                     <h2>{product.title}</h2>
-                    <p className="lead">Harga: Rp{product.price}</p>
+                    <p className="lead">Harga: ${product.price}</p>
                     <p>{product.description}</p>
                     <button className="btn btn-primary" onClick={handleAddToCart}>
-                        Tambah ke Keranjang
+                        Add To cart
                     </button>
                 </div>
             </div>

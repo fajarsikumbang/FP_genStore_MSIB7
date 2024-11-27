@@ -39,19 +39,19 @@ function Header() {
                 </button>
 
                 <nav className={`nav-links ${isMenuOpen ? 'active' : ''} d-flex align-items-center`}>
-                    <Link className="nav-link" to="/">Beranda</Link>
+                    <Link className="nav-link" to="/">Home</Link>
                     {!isAuthenticated ? (
-                        <Link className="nav-link" to="/login">Masuk</Link>
+                        <Link className="nav-link" to="/login">Login</Link>
                     ) : (
                         <>
                             <Link className="nav-link" to="/cart">
-                                Keranjang ({items.length})
+                                Cart ({items.length})
                             </Link>
                             <button
                                 className="logout-link"
                                 onClick={handleLogout}
                             >
-                                Keluar
+                                Logout
                             </button>
                         </>
                     )}

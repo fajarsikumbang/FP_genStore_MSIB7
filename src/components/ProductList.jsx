@@ -9,8 +9,18 @@ function ProductList({ products }) {
 
     const handleAddToCart = (product) => {
         if (!isAuthenticated) {
-            return alert("Silakan masuk untuk menambahkan item ke keranjang.");
+            return alert("Please log in to add items to the cart.");
         }
+
+        
+        if (product.stock <= 0) {
+            return alert("Sorry, this product is out of stock.");
+        }
+        if (product.stock > 10) {
+            return alert("Sorry, you can only buy up to 10 items of this product.");
+        }
+
+        
         dispatch(addToCart(product));
     };
 
@@ -30,12 +40,14 @@ function ProductList({ products }) {
                             <h5 className="card-title text-center">
                                 <Link to={`/product/${product.id}`}>{product.title}</Link>
                             </h5>
-                            <p className="card-text text-center">Harga: Rp{product.price}</p>
+                            <p className="card-text text-center">Price: ${product.price}</p>
+                            <p className="card-text text-center">Stock: {product.stock} 10</p>
                             <button
                                 className="btn btn-primary mt-auto"
                                 onClick={() => handleAddToCart(product)}
+                                disabled={product.stock <= 0}
                             >
-                                Tambah ke Keranjang
+                                Add to Cart
                             </button>
                         </div>
                     </div>
