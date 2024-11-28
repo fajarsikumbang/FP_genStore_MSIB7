@@ -28,18 +28,19 @@ function CartPage() {
     const handlePayment = (e) => {
         e.preventDefault();
 
-        // Cek apakah ada produk yang stoknya kurang dari jumlah yang dibeli
+        // Periksa apakah ada item yang jumlahnya melebihi stok
         const insufficientStock = items.some(item => item.quantity > item.stock);
 
         if (insufficientStock) {
             setError("One or more items have insufficient stock.");
-            return;  // Jangan lanjutkan ke proses pembayaran
+            return; 
         }
 
-        setError(""); // Clear error jika stok mencukupi
+        // Jika semua item memiliki stok yang mencukupi
+        setError("");
         setShowConfirmation(true);
 
-        // Hapus barang dari keranjang setelah pembayaran berhasil
+        // Hapus semua item setelah pembayaran berhasil
         items.forEach(item => dispatch(removeFromCart(item)));
     };
 
@@ -47,19 +48,17 @@ function CartPage() {
         setTotal(calculateTotal());
     }, [calculateTotal]);
 
-    // Menyimpan ke localStorage setiap kali ada perubahan pada items
     useEffect(() => {
         if (items.length > 0) {
-            localStorage.setItem("cart", JSON.stringify(items));  // Simpan items ke localStorage
+            localStorage.setItem("cart", JSON.stringify(items)); 
         }
     }, [items]);
 
-    // Mengambil data keranjang dari localStorage saat halaman dimuat pertama kali
     useEffect(() => {
         const savedCart = localStorage.getItem("cart");
         if (savedCart) {
             const cartItems = JSON.parse(savedCart);
-            cartItems.forEach(item => dispatch(addToCart(item)));  // Tambahkan item dari localStorage ke store
+            cartItems.forEach(item => dispatch(addToCart(item))); 
         }
     }, [dispatch]);
 
