@@ -9,18 +9,20 @@ function ProductList({ products }) {
 
     const handleAddToCart = (product) => {
         if (!isAuthenticated) {
-            return alert("Please log in to add items to the cart.");
+            alert("Please log in to add items to the cart.");
+            return;
         }
 
-        
         if (product.stock <= 0) {
-            return alert("Sorry, this product is out of stock.");
-        }
-        if (product.stock > 10) {
-            return alert("Sorry, you can only buy up to 10 items of this product.");
+            alert("Sorry, this product is out of stock.");
+            return;
         }
 
-        
+        if (product.stock > 10) {
+            alert("Sorry, you can only buy up to 10 items of this product.");
+            return;
+        }
+
         dispatch(addToCart(product));
     };
 
@@ -41,7 +43,7 @@ function ProductList({ products }) {
                                 <Link to={`/product/${product.id}`}>{product.title}</Link>
                             </h5>
                             <p className="card-text text-center">Price: ${product.price}</p>
-                            <p className="card-text text-center">Stock: {product.stock} 10</p>
+                            <p className="card-text text-center">Stock: 10{product.stock}</p>
                             <button
                                 className="btn btn-primary mt-auto"
                                 onClick={() => handleAddToCart(product)}
