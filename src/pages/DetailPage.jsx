@@ -18,7 +18,7 @@ function DetailPage() {
             navigate("/login");
             return;
         }
-        dispatch(addToCart(product));
+        dispatch(addToCart({ ...product, quantity: 1 }));
         alert(`${product.title} has been added to the cart!`);
     };
 
