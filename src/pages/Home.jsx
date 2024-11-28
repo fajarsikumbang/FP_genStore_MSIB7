@@ -12,16 +12,16 @@ function Home() {
     }, [dispatch]);
 
     if (loading) {
-        return <h2 className="text-center">Memuat...</h2>;
+        return <h2 className="text-center">Loading...</h2>;
     }
 
     if (error) {
-        return <h2 className="text-center text-danger">Kesalahan: {error}</h2>;
+        return <h2 className="text-center text-danger">Error: {error}</h2>;
     }
 
     return (
         <div>
-            <h2 className="text-center">Daftar Produk</h2>
+            <h2 className="text-center">Product List</h2>
             <ProductList products={items} />
         </div>
     );
