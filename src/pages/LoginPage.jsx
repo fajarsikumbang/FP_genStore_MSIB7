@@ -17,7 +17,7 @@ function LoginPage() {
 
     return (
         <div className="container">
-            <h2 className="text-center">Masuk</h2>
+            <h2 className="text-center">Login</h2>
             <form onSubmit={handleSubmit} className="form-group">
                 <input
                     type="text"
@@ -30,12 +30,12 @@ function LoginPage() {
                 <input
                     type="password"
                     className="form-control mb-3"
-                    placeholder="Kata Sandi"
+                    placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit" className="btn btn-primary w-100">Masuk</button>
+                <button type="submit" className="btn btn-primary w-100">Login</button>
             </form>
         </div>
     );
