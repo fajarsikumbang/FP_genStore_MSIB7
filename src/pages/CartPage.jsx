@@ -28,7 +28,6 @@ function CartPage() {
     const handlePayment = (e) => {
         e.preventDefault();
 
-        // Periksa apakah ada item yang jumlahnya melebihi stok
         const insufficientStock = items.some(item => item.quantity > item.stock);
 
         if (insufficientStock) {
@@ -36,11 +35,9 @@ function CartPage() {
             return; 
         }
 
-        // Jika semua item memiliki stok yang mencukupi
         setError("");
         setShowConfirmation(true);
 
-        // Hapus semua item setelah pembayaran berhasil
         items.forEach(item => dispatch(removeFromCart(item)));
     };
 

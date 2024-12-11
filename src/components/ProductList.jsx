@@ -40,7 +40,7 @@ function ProductList({ products }) {
                         </div>
                         <div className="card-body d-flex flex-column justify-content-between">
                             <h5 className="card-title text-center">
-                                {/* Link without the default style */}
+                                {}
                                 <Link 
                                     to={`/product/${product.id}`} 
                                     style={{ textDecoration: "none", color: "inherit" }}
