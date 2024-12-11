@@ -28,17 +28,27 @@ function CartPage() {
     const handlePayment = (e) => {
         e.preventDefault();
 
-        const insufficientStock = items.some(item => item.quantity > item.stock);
+        const insufficientStock = items.some(item => item.quantity > 20);
 
         if (insufficientStock) {
-            setError("One or more items have insufficient stock.");
+            setError("One or more items have exceeded the available stock (max 20).");
             return; 
+        }
+
+        const outOfStockItems = items.some(item => item.quantity > item.stock);
+        if (outOfStockItems) {
+            setError("One or more items have insufficient stock.");
+            return;
         }
 
         setError("");
         setShowConfirmation(true);
 
-        items.forEach(item => dispatch(removeFromCart(item)));
+        items.forEach(item => {
+            dispatch(removeFromCart(item)); 
+        });
+
+        setPaymentInfo({ name: "", cardNumber: "" });
     };
 
     useEffect(() => {
