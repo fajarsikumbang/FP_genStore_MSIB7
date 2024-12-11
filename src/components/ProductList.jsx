@@ -18,7 +18,7 @@ function ProductList({ products }) {
             return;
         }
 
-        if (product.stock > 10) {
+        if (product.stock > 20) {
             alert("Sorry, you can only buy up to 10 items of this product.");
             return;
         }
@@ -40,10 +40,15 @@ function ProductList({ products }) {
                         </div>
                         <div className="card-body d-flex flex-column justify-content-between">
                             <h5 className="card-title text-center">
-                                <Link to={`/product/${product.id}`}>{product.title}</Link>
+                                <Link 
+                                    to={`/product/${product.id}`} 
+                                    className="text-decoration-none text-dark"
+                                >
+                                    {product.title}
+                                </Link>
                             </h5>
                             <p className="card-text text-center">Price: ${product.price}</p>
-                            <p className="card-text text-center">Stock: 10{product.stock}</p>
+                            <p className="card-text text-center">Stock: {product.stock}</p>
                             <button
                                 className="btn btn-primary mt-auto"
                                 onClick={() => handleAddToCart(product)}
