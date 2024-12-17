@@ -48,7 +48,7 @@ function ProductList({ products }) {
                                 </Link>
                             </h5>
                             <p className="card-text text-center">Price: ${product.price}</p>
-                            <p className="card-text text-center">Stock: 20{product.stock}</p>
+                            <p className="card-text text-center">Stock: {product.stock}</p>
                             <button
                                 className="btn btn-primary mt-auto"
                                 onClick={() => handleAddToCart(product)}

@@ -14,11 +14,14 @@ const cartSlice = createSlice({
                 state.items.push(action.payload);
             }
         },
-        removeFromCart(state, action) { 
+        removeFromCart(state, action) {
             state.items = state.items.filter(item => item.id !== action.payload.id);
+        },
+        checkout(state) {
+            state.items = []; // Kosongkan keranjang setelah checkout
         },
     },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, checkout } = cartSlice.actions;
 export default cartSlice.reducer;

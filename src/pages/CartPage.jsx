@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, addToCart } from "../redux/reducers/cartReducer";
+import { removeFromCart, checkout } from "../redux/reducers/cartReducer";
+import { reduceStock } from "../redux/reducers/productReducer";
 
 function CartPage() {
     const { items } = useSelector((state) => state.cart);
@@ -28,46 +29,29 @@ function CartPage() {
     const handlePayment = (e) => {
         e.preventDefault();
 
-        const insufficientStock = items.some(item => item.quantity > 20);
-
+        const insufficientStock = items.some(item => item.quantity > item.stock);
         if (insufficientStock) {
-            setError("One or more items have exceeded the available stock (max 20).");
-            return; 
-        }
-
-        const outOfStockItems = items.some(item => item.quantity > item.stock);
-        if (outOfStockItems) {
             setError("One or more items have insufficient stock.");
             return;
         }
 
         setError("");
+
+        // Kurangi stok
+        dispatch(reduceStock(items));
+
+        // Checkout
+        dispatch(checkout());
+
         setShowConfirmation(true);
-
-        items.forEach(item => {
-            dispatch(removeFromCart(item)); 
-        });
-
         setPaymentInfo({ name: "", cardNumber: "" });
+
+        alert("Checkout successful!");
     };
 
     useEffect(() => {
         setTotal(calculateTotal());
     }, [calculateTotal]);
-
-    useEffect(() => {
-        if (items.length > 0) {
-            localStorage.setItem("cart", JSON.stringify(items)); 
-        }
-    }, [items]);
-
-    useEffect(() => {
-        const savedCart = localStorage.getItem("cart");
-        if (savedCart) {
-            const cartItems = JSON.parse(savedCart);
-            cartItems.forEach(item => dispatch(addToCart(item))); 
-        }
-    }, [dispatch]);
 
     return (
         <div className="container cart-page">
@@ -96,10 +80,11 @@ function CartPage() {
                                             type="number"
                                             value={item.quantity}
                                             min="1"
+                                            max={item.stock}
                                             onChange={(e) => {
                                                 const qty = Math.max(1, Number(e.target.value));
                                                 if (qty !== item.quantity) {
-                                                    dispatch(addToCart({ ...item, quantity: qty }));
+                                                    dispatch({ type: "cart/addToCart", payload: { ...item, quantity: qty } });
                                                 }
                                             }}
                                         />
