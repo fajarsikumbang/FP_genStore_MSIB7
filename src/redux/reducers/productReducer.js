@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async () => {
     const response = await axios.get(process.env.REACT_APP_API_URL);
-    return response.data.map(product => ({ ...product, stock: 20 })); // Tambahkan stok default 20
+    return response.data.map(product => ({ ...product, stock: 20 }));
 });
 
 const productSlice = createSlice({
@@ -18,7 +18,7 @@ const productSlice = createSlice({
             action.payload.forEach(cartItem => {
                 const product = state.items.find(item => item.id === cartItem.id);
                 if (product) {
-                    product.stock -= cartItem.quantity; // Kurangi stok sesuai jumlah di keranjang
+                    product.stock -= cartItem.quantity;
                 }
             });
         },

@@ -29,7 +29,7 @@ function CartPage() {
     const handlePayment = (e) => {
         e.preventDefault();
 
-        const insufficientStock = items.some(item => item.quantity > item.stock);
+        const insufficientStock = items.some((item) => item.quantity > item.stock);
         if (insufficientStock) {
             setError("One or more items have insufficient stock.");
             return;
@@ -37,16 +37,17 @@ function CartPage() {
 
         setError("");
 
-        // Kurangi stok
+        
         dispatch(reduceStock(items));
 
-        // Checkout
+        
         dispatch(checkout());
 
+        
         setShowConfirmation(true);
-        setPaymentInfo({ name: "", cardNumber: "" });
 
-        alert("Checkout successful!");
+
+        setPaymentInfo({ name: "", cardNumber: "" });
     };
 
     useEffect(() => {
@@ -84,14 +85,20 @@ function CartPage() {
                                             onChange={(e) => {
                                                 const qty = Math.max(1, Number(e.target.value));
                                                 if (qty !== item.quantity) {
-                                                    dispatch({ type: "cart/addToCart", payload: { ...item, quantity: qty } });
+                                                    dispatch({
+                                                        type: "cart/addToCart",
+                                                        payload: { ...item, quantity: qty },
+                                                    });
                                                 }
                                             }}
                                         />
                                     </td>
                                     <td>{formatDollar(item.price * item.quantity)}</td>
                                     <td>
-                                        <button className="btn btn-danger" onClick={() => handleRemove(item)}>
+                                        <button
+                                            className="btn btn-danger"
+                                            onClick={() => handleRemove(item)}
+                                        >
                                             Remove
                                         </button>
                                     </td>
@@ -108,7 +115,9 @@ function CartPage() {
                             className="form-control mb-2"
                             placeholder="Name on Card"
                             value={paymentInfo.name}
-                            onChange={(e) => setPaymentInfo({ ...paymentInfo, name: e.target.value })}
+                            onChange={(e) =>
+                                setPaymentInfo({ ...paymentInfo, name: e.target.value })
+                            }
                             required
                         />
                         <input
@@ -116,14 +125,23 @@ function CartPage() {
                             className="form-control mb-3"
                             placeholder="Card Number"
                             value={paymentInfo.cardNumber}
-                            onChange={(e) => setPaymentInfo({ ...paymentInfo, cardNumber: e.target.value })}
+                            onChange={(e) =>
+                                setPaymentInfo({ ...paymentInfo, cardNumber: e.target.value })
+                            }
                             required
                         />
-                        <button type="submit" className="btn btn-success w-100">Pay</button>
+                        <button type="submit" className="btn btn-success w-100">
+                            Pay
+                        </button>
                     </form>
                     {showConfirmation && (
                         <div className="alert alert-success mt-3" role="alert">
-                            Payment successful! Thank you for your purchase.
+                            <h5>Thank You for Your Purchase!</h5>
+                            <p>Your order has been processed successfully.</p>
+                            <p>
+                                We appreciate your business. You will receive an email confirmation
+                                shortly.
+                            </p>
                         </div>
                     )}
                 </div>

@@ -18,7 +18,7 @@ const cartSlice = createSlice({
             state.items = state.items.filter(item => item.id !== action.payload.id);
         },
         checkout(state) {
-            state.items = []; // Kosongkan keranjang setelah checkout
+            state.items = [];
         },
     },
 });
