@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Gen Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Gen Store adalah aplikasi e-commerce sederhana yang dibangun menggunakan ReactJS dan Redux Toolkit. Project ini dirancang untuk memenuhi kebutuhan pengguna yang ingin membeli produk digital dengan mudah dan cepat.
 
-## Available Scripts
+## Fitur Utama
 
-In the project directory, you can run:
+- **Autentikasi Pengguna**: Login dan logout untuk mengamankan data pengguna.
+- **Daftar Produk**: Menampilkan daftar produk dengan informasi stok yang tersedia.
+- **Keranjang Belanja**: Tambah, ubah, dan hapus item dari keranjang.
+- **Checkout**: Mengosongkan keranjang setelah transaksi selesai.
+- **Pengurangan Stok**: Stok produk akan otomatis berkurang setelah pembelian.
 
-### `npm start`
+## Teknologi yang Digunakan
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: ReactJS, React Router, Bootstrap
+- **State Management**: Redux Toolkit
+- **Backend**: REST API menggunakan axios (simulasi melalui environment variable)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Struktur Folder
 
-### `npm test`
+```
+.
+├── src
+│   ├── components
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   └── ProductList.jsx
+│   ├── pages
+│   │   ├── Home.jsx
+│   │   ├── LoginPage.jsx
+│   │   ├── CartPage.jsx
+│   │   └── DetailPage.jsx
+│   ├── redux
+│   │   ├── reducers
+│   │   │   ├── authReducer.js
+│   │   │   ├── cartReducer.js
+│   │   │   └── productReducer.js
+│   │   └── Store.js
+│   ├── App.jsx
+│   ├── index.js
+│   └── index.css
+└── README.md
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Instalasi dan Menjalankan Proyek
 
-### `npm run build`
+1. Clone repositori ini:
+   ```bash
+   git clone https://github.com/fajarsikumbang/FP_genStore_MSIB7.git
+   ```
+2. Masuk ke direktori proyek:
+   ```bash
+   cd gen-store
+   ```
+3. Instal dependensi:
+   ```bash
+   npm install
+   ```
+4. Tambahkan file `.env` untuk URL API:
+   ```env
+   REACT_APP_API_URL=https://api.example.com/products
+   ```
+5. Jalankan aplikasi:
+   ```bash
+   npm start
+   ```
+6. Buka di browser:
+   ```
+   http://localhost:3000
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Cara Penggunaan
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Login**: Masuk ke halaman login untuk autentikasi.
+2. **Pilih Produk**: Telusuri daftar produk pada halaman utama.
+3. **Tambah ke Keranjang**: Pilih produk yang diinginkan dan tambahkan ke keranjang.
+4. **Lakukan Checkout**: Selesaikan pembelian dan periksa pengurangan stok produk.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Kontributor
 
-### `npm run eject`
+- **Fajar Maulana** - Frontend Developer
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Lisensi
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Project ini menggunakan lisensi [MIT](LICENSE).
