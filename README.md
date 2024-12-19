@@ -50,7 +50,7 @@ Gen Store adalah aplikasi e-commerce sederhana yang dibangun menggunakan ReactJS
    ```
 2. Masuk ke direktori proyek:
    ```bash
-   cd gen-store
+   cd FP_genStore_MSIB7
    ```
 3. Instal dependensi:
    ```bash
